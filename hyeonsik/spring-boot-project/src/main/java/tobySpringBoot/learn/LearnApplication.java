@@ -6,6 +6,9 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -22,10 +25,13 @@ public class LearnApplication {
 			servletContext.addServlet("hello", new HttpServlet() {
 				@Override
 				protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+					// 파라미터 분석
+					String name = req.getParameter("name");
+
 					// response 를 만든다.
-					resp.setStatus(200);
-					resp.setHeader("Content-Type", "text/plain");
-					resp.getWriter().print("Hello Servlet");
+					resp.setStatus(HttpStatus.OK.value());
+					resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
+					resp.getWriter().print("Hello " + name);
 				}
 			}).addMapping("/hello");  // path pattern matching
 		});
