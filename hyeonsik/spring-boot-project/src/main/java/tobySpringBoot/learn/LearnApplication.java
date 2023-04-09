@@ -25,6 +25,7 @@ public class LearnApplication {
 		// SpringContainer를 만든다.
 		GenericApplicationContext applicationContext = new GenericApplicationContext();
 		applicationContext.registerBean(HelloController.class);  // 생성할 빈들을 명시
+		applicationContext.registerBean(SimpleHelloService.class);
 		applicationContext.refresh();  // 이걸 통해 빈 오브젝트들을 만들어준다.
 
 		ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();  // Factory에 기본적인 설정들이 잡혀있다.
