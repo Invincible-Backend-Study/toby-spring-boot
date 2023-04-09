@@ -39,27 +39,9 @@ public class LearnApplication {
 	}
 
 	public static void main(String[] args) {
-		// SpringContainer를 만든다.
-		AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext() {
-			@Override
-			protected void onRefresh() {  // onRefresh는 applicationContext.refresh() 내부에서 호출된다.
-				super.onRefresh();
-
-				ServletWebServerFactory serverFactory = this.getBean(ServletWebServerFactory.class);
-				DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
-				// dispatcherServlet.setApplicationContext(this);  // SrpingContainer를 연결해준다.
-				// 근데 여기에 주입 구문을 안넣어줘도 정상적으로 동작한다. 왜? SpringContainer가 알아서 주입해줌!
-				// 이걸 이해하려면 Bean의 LifeCycle Method라는 개념을 알아야함
-
-				WebServer webServer = serverFactory.getWebServer(servletContext -> {
-					servletContext.addServlet("dispatcherServlet", dispatcherServlet).addMapping("/*");  // path pattern matching
-				});
-				webServer.start();
-			}
-		};
-
-		applicationContext.register(LearnApplication.class);  // 구성정보를 담고있는 클래스를 불러와줘야한다.
-		applicationContext.refresh();  // 이걸 통해 빈 오브젝트들을 만들어준다.
+		// MySpringApplication.run(LearnApplication.class, args);  // 우리가 만든 클래스로 동작
+		SpringApplication.run(LearnApplication.class, args);  // 실제 스프링의 동작
 	}
+
 
 }
