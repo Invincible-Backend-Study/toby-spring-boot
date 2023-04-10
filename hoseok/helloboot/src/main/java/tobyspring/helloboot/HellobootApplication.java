@@ -1,9 +1,17 @@
 package tobyspring.helloboot;
 
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.WebServer;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+
 public class HellobootApplication {
 
 	public static void main(String[] args) {
-		System.out.println("Hello Containerless Standalone Application");
+		ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
+
+		// 톰캣외에 제티, 언더토우 같은 유명한 서블릿 컨테이너를 지원할 수 있고, 일관된 방식으로 동작하도록 추상화했기에 Tomcat이 보이지 않음
+		WebServer webServer = serverFactory.getWebServer();
+		webServer.start();
 	}
 
 }
