@@ -1,12 +1,12 @@
 package tobyspring.helloboot;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import tobyspring.helloboot.controller.HelloController;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,6 +42,7 @@ public class HellobootApplication {
 						resp.getWriter().println(rt);
 						return;
 					}
+
 
 				}
 			}).addMapping("/");
