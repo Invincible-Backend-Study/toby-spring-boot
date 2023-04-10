@@ -7,6 +7,7 @@ import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import tobyspring.helloboot.controller.HelloController;
+import tobyspring.helloboot.service.SimpleHelloService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +23,7 @@ public class HellobootApplication {
 
 		GenericApplicationContext applicationContext = new GenericApplicationContext();
 		applicationContext.registerBean(HelloController.class);
+		applicationContext.registerBean(SimpleHelloService.class);
 		applicationContext.refresh();
 
 		TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
