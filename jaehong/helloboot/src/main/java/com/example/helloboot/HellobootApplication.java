@@ -1,31 +1,30 @@
 package com.example.helloboot;
 
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.DispatcherServlet;
 
+
+@Configuration
+@ComponentScan
 public class HellobootApplication {
+
+    @Bean
+    public ServletWebServerFactory servletWebServerFactory(){
+        return new TomcatServletWebServerFactory();
+    }
+
+    @Bean
+    public DispatcherServlet dispatcherServlet(){
+        return new DispatcherServlet();
+    }
     public static void main(String[] args) {
-        final var tomcatServletWebServerFactory = new TomcatServletWebServerFactory();
-        final var webServer = tomcatServletWebServerFactory.getWebServer(servletContext -> {
-            servletContext.addServlet("hello", new HttpServlet() {
-                @Override
-                protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                    final var name = request.getParameter("name");
-                    response.setStatus(HttpStatus.OK.value());
-                    response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
-                    response.getWriter().println("Hello" + name);
-                }
-            }).addMapping("/hello");
-        });
-        webServer.start();
+        SpringApplication.run(HellobootApplication.class, args);
     }
 
 }
