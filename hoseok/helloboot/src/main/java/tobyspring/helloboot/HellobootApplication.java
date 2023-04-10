@@ -18,8 +18,9 @@ public class HellobootApplication {
     public static void main(String[] args) {
         // ApplicationContext는 애플리케이션을 구성하는 많은 정보, 리소스에 접근하는 방법, 내부 이벤트 전달, 구독방법 등 많은 작업들을 수행하는 기능들을 담고있다.
         GenericApplicationContext applicationContext = new GenericApplicationContext();
-        // HelloController를 bean으로 등록
+        // 특정 클래스 타입을 bean으로 등록
         applicationContext.registerBean(HelloController.class);
+        applicationContext.registerBean(SimpleHelloService.class);
         // 자기가 가지고 있는 정보를 활용해 컨텍스트를 초기화
         applicationContext.refresh();
 

@@ -8,10 +8,15 @@ public class HelloController {
 
     private static final Logger log = LoggerFactory.getLogger(HelloController.class);
 
+    private final HelloService helloService;
+
+    public HelloController(final HelloService helloService) {
+        this.helloService = helloService;
+    }
+
     public String hello(final String name) {
         log.info("call HelloController#hello");
-        SimpleHelloService simpleHelloService = new SimpleHelloService();
-        return simpleHelloService.sayHello(Objects.requireNonNull(name));
+        return helloService.sayHello(Objects.requireNonNull(name));
     }
 
 }
