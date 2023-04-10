@@ -1,13 +1,15 @@
 package tobyspring.helloboot;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@RestController
 public class HelloController {
 
-    @GetMapping("hello")
+    private static final Logger log = LoggerFactory.getLogger(HelloController.class);
+
     public String hello(final String name) {
+        log.info("call HelloController#hello");
         return "hello " + name;
     }
+
 }
