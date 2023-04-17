@@ -32,4 +32,15 @@ public class HelloApiTest {
         );
     }
 
+    @Test
+    void failsHelloApi() {
+        // http localhost:8080/hello?name=spring
+        TestRestTemplate rest = new TestRestTemplate();
+
+        ResponseEntity<String> spring = rest.getForEntity("http://localhost:8080/hello", String.class);
+
+        // 응답 검증 3가지
+        assertThat(spring.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }
