@@ -28,7 +28,7 @@ public class HelloApiTest {
                 () -> assertThat(spring.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(
                         MediaType.TEXT_PLAIN_VALUE),
                 // body Hello Spring
-                () -> assertThat(spring.getBody()).isEqualTo("Hello Spring")
+                () -> assertThat(spring.getBody()).isEqualTo("*Hello Spring*")
         );
     }
 
