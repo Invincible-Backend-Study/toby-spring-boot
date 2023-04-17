@@ -1,4 +1,4 @@
-package tobySpringBoot.learn;
+package tobySpringBoot.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
