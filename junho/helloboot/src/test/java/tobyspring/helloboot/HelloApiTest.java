@@ -19,7 +19,7 @@ class HelloApiTest {
 		//status code 200인가?
 		Assertions.assertThat(spring.getStatusCode()).isEqualTo(HttpStatus.OK);
 		//header의 콘텐츠 타입이 text/plain인가?
-		Assertions.assertThat(spring.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(MediaType.TEXT_HTML_VALUE + ";charset=UTF-8");
+		Assertions.assertThat(spring.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(MediaType.TEXT_HTML_VALUE + ";charset=utf-8");
 		//body가 안녕 spring인가?
 		Assertions.assertThat(spring.getBody()).isEqualTo("안녕spring");
 	}

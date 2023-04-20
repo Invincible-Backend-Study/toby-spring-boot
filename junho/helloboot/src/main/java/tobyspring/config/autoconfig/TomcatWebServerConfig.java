@@ -1,13 +1,15 @@
-package tobyspring.helloboot.config.autoconfig;
+package tobyspring.config.autoconfig;
 
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import tobyspring.config.MyAutoConfiguration;
 
-@Configuration
+@MyAutoConfiguration
+@ConditionalMyonClass("org.apache.catalina.startup.Tomcat")
 public class TomcatWebServerConfig {
-    @Bean
+    @Bean("tomcatWebServerFactory")
     public TomcatServletWebServerFactory servletWebServerFactory() {
         return new TomcatServletWebServerFactory();
     }
+
 }
