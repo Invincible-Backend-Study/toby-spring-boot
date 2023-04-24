@@ -23,9 +23,9 @@ public class JettyWebServerConfig {
 
         @Override
         public boolean matches(final ConditionContext context, final AnnotatedTypeMetadata metadata) {
-
             return true;
         }
 
     }
+
 }
