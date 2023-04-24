@@ -1,3 +1,4 @@
+tobySpringBoot.config.autoconfig.PropertyPlaceholderConfig
 tobySpringBoot.config.autoconfig.TomcatWebServerConfig
 tobySpringBoot.config.autoconfig.JettyWebServerConfig
 tobySpringBoot.config.autoconfig.DispatcherServletConfig
