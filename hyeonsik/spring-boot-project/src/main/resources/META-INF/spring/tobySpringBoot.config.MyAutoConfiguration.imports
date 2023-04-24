@@ -1,2 +1,3 @@
 tobySpringBoot.config.autoconfig.TomcatWebServerConfig
+tobySpringBoot.config.autoconfig.JettyWebServerConfig
 tobySpringBoot.config.autoconfig.DispatcherServletConfig
