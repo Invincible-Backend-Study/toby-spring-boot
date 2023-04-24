@@ -1,6 +1,5 @@
 package tobyspring.helloboot;
 
-import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,10 @@ public class HelloController {
     @GetMapping("/hello")
     public String hello(final String name) {
         log.info("call HelloController#hello");
-        return helloService.sayHello(Objects.requireNonNull(name));
+        if (name == null || name.trim().length() == 0) {
+            throw new IllegalArgumentException();
+        }
+        return helloService.sayHello(name);
     }
 
 }
