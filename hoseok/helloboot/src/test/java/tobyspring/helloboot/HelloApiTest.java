@@ -17,7 +17,7 @@ public class HelloApiTest {
         // http localhost:8080/hello?name=spring
         TestRestTemplate rest = new TestRestTemplate();
 
-        ResponseEntity<String> spring = rest.getForEntity("http://localhost:8080/app/hello?name={name}", String.class,
+        ResponseEntity<String> spring = rest.getForEntity("http://localhost:9090/app/hello?name={name}", String.class,
                 "Spring");
 
         // 응답 검증 3가지
@@ -37,7 +37,7 @@ public class HelloApiTest {
         // http localhost:8080/hello?name=spring
         TestRestTemplate rest = new TestRestTemplate();
 
-        ResponseEntity<String> spring = rest.getForEntity("http://localhost:8080/app/hello", String.class);
+        ResponseEntity<String> spring = rest.getForEntity("http://localhost:9090/app/hello", String.class);
 
         // 응답 검증 3가지
         assertThat(spring.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
