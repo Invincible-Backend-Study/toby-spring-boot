@@ -14,12 +14,12 @@ class HelloApiTest {
 	void helloApi() {
 		TestRestTemplate restTemplate = new TestRestTemplate();
 		ResponseEntity<String> spring = restTemplate.getForEntity(
-				"http://localhost:8080/hello?name={name}", String.class, "spring");
+				"http://localhost:9090/app/hello?name={name}", String.class, "spring");
 
 		//status code 200인가?
 		Assertions.assertThat(spring.getStatusCode()).isEqualTo(HttpStatus.OK);
 		//header의 콘텐츠 타입이 text/plain인가?
-		Assertions.assertThat(spring.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(MediaType.TEXT_HTML_VALUE + ";charset=utf-8");
+		Assertions.assertThat(spring.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(MediaType.TEXT_HTML_VALUE + ";charset=UTF-8");
 		//body가 안녕 spring인가?
 		Assertions.assertThat(spring.getBody()).isEqualTo("안녕spring");
 	}
@@ -28,7 +28,7 @@ class HelloApiTest {
 	void failedHelloApi() {
 		TestRestTemplate restTemplate = new TestRestTemplate();
 		ResponseEntity<String> spring = restTemplate.getForEntity(
-				"http://localhost:8080/hello?name=", String.class);
+				"http://localhost:9090/app/hello?name=", String.class);
 
 		Assertions.assertThat(spring.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
