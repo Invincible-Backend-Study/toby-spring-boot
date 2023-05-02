@@ -1,5 +1,6 @@
 package tobyspring.config;
 
+import javax.sql.DataSource;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.web.server.WebServer;
@@ -7,6 +8,7 @@ import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.core.env.Environment;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+import tobyspring.config.autoconfig.DataSourceConfig;
 
 public class MySpringApplication {
 

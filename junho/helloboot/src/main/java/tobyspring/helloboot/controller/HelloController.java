@@ -31,7 +31,14 @@ public class HelloController {
         if (name == null || name.trim().length() == 0) {
             throw new IllegalArgumentException();
         }
+        System.out.println(name);
         return helloService.sayHello(name);
+    }
+
+    @GetMapping(value = "/count", produces = MediaType.TEXT_HTML_VALUE + ";charset=UTF-8")
+    public String count(String name) {
+
+        return helloService.countOf(name);
     }
 
 }
